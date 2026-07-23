@@ -2,37 +2,35 @@
 #include <iomanip>
 using namespace std;
 using ull = unsigned long long;
-constexpr int tam = 12;
+constexpr int tam = 4;
 
 int main() {
   cout << fixed << setprecision(1);
   float m[tam][tam], sum;
+  int n = 0;
   char op;
-  int quant = 0;
 
   cin >> op;
 
-  sum = 0.0;
   for(int i = 0; i < tam; i++) {
-    for(int j = 0; j < tam; j++) {
+    for(int j = 0; j < tam; j++){
       cin >> m[i][j];
     }
   }
-  
+
   for(int i = 0; i < tam; i++) {
-    for(int j = 0; j != i; j++) {
+    for(int j = tam - 1; j > (tam - 1) - i; j--) {
       sum += m[i][j];
-      quant ++;
+      n++;
     }
   }
 
-  if (op == 'S') {
+  if(op == 'S') {
     cout << sum;
   }else {
-    cout << sum / quant;
+    cout << sum / n;
   }
 
-  cout << endl;
-
+  cout << "\n";
   return 0;
 }
